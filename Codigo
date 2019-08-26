@@ -1,0 +1,39 @@
+package teste;
+
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.SimpleEmail;
+
+public class TesteEmail {
+
+	public static void main(String[] args) {
+		
+		String meuEmail = " ";
+		String minhaSenha = " ";
+		String deleEmail = " ";
+		
+		SimpleEmail email = new SimpleEmail();
+		email.setHostName("smtp.gmail.com");
+		email.setSmtpPort(465);
+		email.setAuthenticator(new DefaultAuthenticator (meuEmail, minhaSenha));
+		email.setSSLOnConnect(true);
+		
+		try {
+			email.setFrom(meuEmail);
+			email.setSubject("ASSUNTO");
+			email.setMsg("MENSAGEM ");
+			email.addTo(deleEmail);
+			email.send();
+			System.out.println("Sucesso!");
+			
+			
+		} 
+		
+		catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		
+		
+	}
+
+}
